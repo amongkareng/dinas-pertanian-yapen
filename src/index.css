@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #1e7f4f; /* hijau elegan */
+  --color-brand-light: #d1f3e4;
+  --color-gray-dark: #1f2937; /* Tailwind gray-800 */
+  --color-gray-light: #f9fafb; /* Tailwind gray-50 */
+  --color-text: #111827; /* gray-900 */
+
+  --font-primary: "DM Sans", sans-serif;
+
+  --background-image-hero: url("/banner.png"); /* ubah sesuai kebutuhan */
+  --color-primary: #ffffff;
+
+  --color-light-100: #cecefb;
+  --color-light-200: #a8b5db;
+
+  --color-gray-100: #9ca4ab;
+
+  --color-dark-100: #0f0d23;
+
+  --font-dm-sans: "DM Sans", sans-serif;
+
+  --breakpoint-xs: 480px;
+  --gradient-hero-from: #14532d;
+  --gradient-hero-to: #1e3a2d;
+}
+
+/* BASE RESET */
+@layer base {
+  body {
+    font-family: var(--font-primary);
+    background-color: var(--color-gray-light);
+    color: var(--color-text);
+    @apply antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-bold text-gray-900;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-5xl leading-tight;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  a {
+    @apply text-[color:var(--color-brand)] hover:underline;
+  }
+
+  button {
+    @apply bg-[color:var(--color-brand)] text-white font-medium px-4 py-2 rounded hover:bg-[color:var(--color-brand-light)] transition-colors;
+  }
+}
+
+/* COMPONENTS */
+@layer components {
+  .container {
+    @apply w-full mx-auto;
+  }
+
+  .wrapper {
+    @apply px-4 sm:px-6 lg:px-8 py-12 max-w-7xl mx-auto flex flex-col;
+  }
+
+  .navbar {
+    @apply w-full bg-white shadow-md sticky top-0 z-50;
+  }
+
+  .navbar-inner {
+    @apply container flex justify-between items-center py-4;
+  }
+
+  .hero {
+    background-image: var(--background-image-hero);
+    @apply bg-cover bg-center text-white py-20 px-4 sm:px-8 text-center;
+  }
+
+  .card {
+    @apply bg-white shadow-md rounded-lg p-6 border border-gray-200 flex flex-col h-full;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl font-semibold text-[color:var(--color-brand)] mb-6 text-center;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-[color:var(--color-brand)] border border-[color:var(--color-brand)] px-4 py-2 rounded hover:bg-[color:var(--color-brand-light)];
+  }
+
+  .grid-news {
+    @apply grid gap-8 sm:grid-cols-2 lg:grid-cols-3;
+  }
+}
+
+/* UTILITIES */
+@utility hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
