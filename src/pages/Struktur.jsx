@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import struktur from "/src/assets/struktur.png";
+import struktur from "../assets/struktur.png";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AOS from "aos";
