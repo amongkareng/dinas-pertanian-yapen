@@ -2,11 +2,20 @@
   {
     "origin": [
       "http://localhost:5173",
-      "http://localhost:3000",
-      "https://dinasyapen-admin.web.app"
+      "https://dinas-pertanian-yapen.vercel.app"
     ],
-    "method": ["GET", "POST", "PUT", "DELETE", "HEAD"],
-    "responseHeader": ["Content-Type", "Authorization", "X-Goog-Resumable"],
+    "method": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE",
+      "HEAD"
+    ],
+    "responseHeader": [
+      "Content-Type",
+      "Authorization",
+      "X-Goog-Resumable"
+    ],
     "maxAgeSeconds": 3600
   }
 ]
