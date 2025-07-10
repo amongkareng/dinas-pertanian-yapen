@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 const BeritaList = () => {
   const [berita, setBerita] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const [showConfirm, setShowConfirm] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
 
@@ -41,12 +40,17 @@ const BeritaList = () => {
 
     const loadingToast = toast.loading("Menghapus berita...");
     try {
-      const imageRef = ref(storage, itemToDelete.image);
-      await deleteObject(imageRef);
+      // Nonaktifkan sementara penghapusan gambar untuk debugging
+      // if (itemToDelete.image) {
+      //   const imageRef = ref(storage, itemToDelete.image);
+      //   await deleteObject(imageRef).catch((error) => {
+      //     if (error.code !== "storage/object-not-found") {
+      //       throw error;
+      //     }
+      //   });
+      // }
       await deleteDoc(doc(db, "berita", itemToDelete.id));
-
       setBerita(berita.filter((b) => b.id !== itemToDelete.id));
-
       toast.success("Berita berhasil dihapus!", { id: loadingToast });
     } catch (error) {
       console.error("Gagal menghapus berita:", error);
@@ -77,6 +81,7 @@ const BeritaList = () => {
             <thead className="bg-gray-100">
               <tr>
                 <th className="px-4 py-2 text-left">Judul</th>
+                <th className="px-4 py-2 text-left">Author</th>
                 <th className="px-4 py-2 text-left">Tanggal</th>
                 <th className="px-4 py-2 text-left">Aksi</th>
               </tr>
@@ -85,12 +90,19 @@ const BeritaList = () => {
               {berita.map((item) => (
                 <tr key={item.id} className="border-b">
                   <td className="px-4 py-2">{item.title}</td>
+                  <td className="px-4 py-2">{item.authorName ?? "-"}</td>
                   <td className="px-4 py-2">
                     {item.date
                       ? item.date.toDate().toLocaleDateString("id-ID")
                       : "N/A"}
                   </td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 space-x-4">
+                    <Link
+                      to={`/admin/edit-berita/${item.id}`}
+                      className="text-blue-600 hover:underline"
+                    >
+                      Edit
+                    </Link>
                     <button
                       onClick={() => handleDeleteClick(item)}
                       className="text-red-600 hover:underline"
@@ -105,6 +117,7 @@ const BeritaList = () => {
         </div>
       )}
 
+      {/* Modal Konfirmasi Hapus */}
       {showConfirm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-xl">
@@ -120,6 +133,7 @@ const BeritaList = () => {
               >
                 Batal
               </button>
+              {/* 👇 PERBAIKAN ADA DI BARIS INI 👇 */}
               <button
                 onClick={confirmDelete}
                 className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"

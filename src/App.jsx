@@ -14,10 +14,11 @@ import Dashboard from "./admin/Dashboard";
 import BeritaList from "./admin/BeritaList";
 import BeritaForm from "./admin/BeritaForm";
 import NotFound from "./pages/NotFound";
-
+import { AuthProvider } from "./context/AuthContext";
 function App() {
   return (
-    <Routes>
+    <AuthProvider>
+      <Routes>
       <Route path="/" element={<PublicLayout />}>
         <Route index element={<LandingPage />} />
         <Route path="news" element={<News />} />
@@ -41,9 +42,12 @@ function App() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="berita" element={<BeritaList />} />
         <Route path="berita/form" element={<BeritaForm />} />
+        <Route path="/admin/edit-berita/:id" element={<BeritaForm />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
+    </AuthProvider>
+    
   );
 }
 

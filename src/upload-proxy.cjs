@@ -5,7 +5,7 @@ const cors = require("cors");
 const multer = require("multer");
 const admin = require("firebase-admin");
 const { getStorage } = require("firebase-admin/storage");
-const ServiceAccount = require("./ServiceAccount.json");
+const ServiceAccount = require("../ServiceAccount.json");
 
 const app = express();
 app.use(cors());

@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
+// 👇 1. Impor ikon baru untuk penulis 👇
+import { FaCalendarAlt, FaMapMarkerAlt, FaUserAlt } from "react-icons/fa";
 
 const NewsCard = (props) => {
-  const { slug, image, title, date, location, dataAosDelay } = props;
+  // 👇 2. Tambahkan `authorName` ke dalam props yang diterima 👇
+  const { slug, image, title, date, location, authorName, dataAosDelay } = props;
 
   const formattedDate =
     date && typeof date.toDate === "function"
@@ -26,7 +28,6 @@ const NewsCard = (props) => {
         alt={title}
         className="w-full h-48 object-cover bg-gray-200"
       />
-
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-lg font-bold text-gray-800 line-clamp-2 mb-3 flex-grow">
           {title}
@@ -41,6 +42,13 @@ const NewsCard = (props) => {
             <FaMapMarkerAlt className="text-green-600" />
             <span>{location}</span>
           </div>
+          {/* 👇 3. Tambahkan elemen untuk menampilkan nama penulis 👇 */}
+          {authorName && (
+            <div className="flex items-center gap-2">
+              <FaUserAlt className="text-green-600" />
+              <span>{authorName}</span>
+            </div>
+          )}
         </div>
 
         <div className="mt-auto">
