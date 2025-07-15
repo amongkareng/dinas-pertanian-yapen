@@ -106,7 +106,7 @@ const Login = () => {
               </button>
             </form>
 
-            <p className="text-center text-sm text-gray-600 mt-8">
+            {/* <p className="text-center text-sm text-gray-600 mt-8">
               Belum punya akun?{" "}
               <Link
                 to="/admin/register"
@@ -114,7 +114,7 @@ const Login = () => {
               >
                 Daftar Sekarang!
               </Link>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
