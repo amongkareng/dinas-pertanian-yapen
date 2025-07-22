@@ -76,7 +76,7 @@ const Footer = () => {
               <a href="#" target="_blank" rel="noopener noreferrer" title="Facebook" className="text-gray-500 hover:text-blue-600 transition-colors">
                 <FaFacebook size={22} />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" title="Instagram" className="text-gray-500 hover:text-pink-500 transition-colors">
+              <a href="https://www.instagram.com/official_kab.kep.yapen?igsh=ZnJ6M3h6YW5oNHk2" target="_blank" rel="noopener noreferrer" title="Instagram" className="text-gray-500 hover:text-pink-500 transition-colors">
                 <FaInstagram size={22} />
               </a>
               <a href="#" target="_blank" rel="noopener noreferrer" title="Telegram" className="text-gray-500 hover:text-blue-400 transition-colors">
